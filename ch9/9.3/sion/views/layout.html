@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/main.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="profile-wrap">
+        <div class="profile">
+         	{% if user and user.id %}
+        	
+		{% else %}
+	 
+	<center>
+    	<h2>Sion stargram</h2>
+    	<img src="https://www.sciencetimes.co.kr/wp-content/uploads/2021/03/GettyImages-1220885164-480x324.jpg" alt="this is test" width="250",height="250">
+    
+	<form id="login-form" action="/auth/login" method="post">
+            <div class="input-group">
+              <label for="email">이메일</label>
+              <input id="email" type="email" name="email" required autofocus>
+            </div>
+ 	    <div class="input-group">
+              <label for="name">이름</label>
+              <input id="name" type="name" name="name" required autofocus>
+            </div>
+            <div class="input-group">
+              <label for="id">ID</label>
+              <input id="id" type="id" name="id" required autofocus>
+            </div>
+	    <div class="input-group">
+              <label for="password">비밀번호</label>
+              <input id="password" type="password" name="password" required>
+            </div>
+            <a id="account" href="/account" class="btn">회원가입</a>
+            <button id="login" type="submit" class="btn">로그인</button>
+	</center>
+          </form>
+        {% endif %}
+      {% block content %}
+      {% endblock %}
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      window.onload = () => {
+        if (new URL(location.href).searchParams.get('loginError')) {
+          alert(new URL(location.href).searchParams.get('loginError'));
+        }
+      };
+    </script>
+    {% block script %}
+    {% endblock %}
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/main.css">
+  </head>
+
+  <body><center>
+	  <h2>
+		  회원가입창
+	  </h2>
+  <div class="timeline">
+    <form id="join-form" action="/auth/account" method="post">
+      <div class="input-group">
+        <label for="join-email">이메일</label>
+        <input id="join-email" type="email" name="email"></div>
+      <div class="input-group">
+        <label for="join-name">이름(성명)</label>
+        <input id="join-name" type="text" name="name"></div>
+      <div class="input-group">
+        <label for="join-id">ID(사용자 이름)</label>
+        <input id="join-id" type="text" name="id"></div>
+      <div class="input-group">
+        <label for="join-password">비밀번호</label>
+        <input id="join-password" type="password" name="password">
+      </div>
+      <button id="join-btn" type="submit" class="btn">회원가입</button>
+    </form>
+  </div>
+	  </center>
+  <script>
+    window.onload = () => {
+      if (new URL(location.href).searchParams.get('error')) {
+	      alert('이미 존재하는 이메일 이거나 Id입니다.');
+      }
+    };
+  </script>
+  </body>
+</html>
