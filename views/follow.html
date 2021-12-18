@@ -1,0 +1,46 @@
+
+
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <title>{{title}}</title>
+      <meta name="viewport" content="width=device-width, user-scalable=no">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <link rel="stylesheet" href="/main.css">
+    </head>
+    <body>
+           <nav id="topMenu" >
+                  <ul>
+                          <li><a class="menuLink" href="/home">Home</a></li>
+                          <li><a class="menuLink" href="/new">New</a></li>
+                          <li><a class="menuLink" href="/profile">Profile</a></li>
+                          <li><a class="menuLink" href="/follow">Follow</a></li>
+                          <li><a class="menuLink" href="/message">Message</a></li>
+              <li><a class="menuLink" href="/auth/logout">LogOut</a></li>
+          </ul>
+          </nav>
+          <p>follow</p>
+        
+   
+	  <div class="followings half">
+      <h2>팔로잉 목록</h2>
+      {% if user.Followings %}
+        {% for following in user.Followings %}
+          <div>{{following.nick}}</div>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <div class="followers half">
+      <h2>팔로워 목록</h2>
+      {% if user.Followers %}
+        {% for follower in user.Followers %}
+          <div>{{follower.nick}}</div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+   
+      </body>
+      </html>
+  
+  

@@ -1,0 +1,82 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/main.css">
+  </head>
+  <body>
+         <nav id="topMenu" >
+                <ul>
+                        <li><a class="menuLink" href="/home">Home</a></li>
+                        <li><a class="menuLink" href="/new">New</a></li>
+                        <li><a class="menuLink" href="/profile">Profile</a></li>
+                        <li><a class="menuLink" href="/follow">Follow</a></li>
+                        <li><a class="menuLink" href="/message">Message</a></li>
+			<li><a class="menuLink" href="/auth/logout">LogOut</a></li>
+		</ul>
+        </nav>
+
+{% block content %}
+<div class="timeline">
+
+            <div class="user-name">{{'안녕하세요! ' + user.id + '님'}}</div>
+            <div class="half">
+              <div>팔로잉 수 :
+              <div class="count following-count">{{followingCount}}</div>
+            	</div>
+	      </div>
+            <div class="half">
+              <div>팔로워 수 :</div>
+              <div class="count follower-count">{{followerCount}}</div>
+            </div>
+
+   <!--
+	  <div class="followings half">
+      <h2>팔로잉 목록</h2>
+      {% if user.Followings %}
+        {% for following in user.Followings %}
+          <div>{{following.nick}}</div>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <div class="followers half">
+      <h2>팔로워 목록</h2>
+      {% if user.Followers %}
+        {% for follower in user.Followers %}
+          <div>{{follower.nick}}</div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+   -->
+    
+    <div id = "date"></div>
+    <div id= "time"></div>
+    </div>
+{% endblock %}
+  </body>
+ 
+{% block script %}
+  <script>
+    function getTime(){
+      const time = new Date();
+      const hour = time.getHours();
+      const minutes = time.getMinutes();
+      const seconds = time.getSeconds();
+      const year = time.getFullYear();
+      const month = time.getMonth()+1; 
+      const date = time.getDate();
+     document.getElementById("time").innerHTML = `${hour<10 ? `0${hour}`:hour}:${minutes<10 ? `0${minutes}`:minutes}:${seconds<10 ? `0${seconds}`:seconds}`
+     document.getElementById("date").innerHTML = year + "년 " + month + "월 " + date + "일";
+    }
+  function init(){
+      setInterval(getTime, 1000);
+  } window.onload = () => {
+    getTime();
+    init();
+  };
+  </script>
+    {% endblock %}
+</html>
